@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AC ADEXA — Your Academic Companion</title>
+  <meta name="description" content="Regulation-aware academic performance and planning platform for college students. Calculate attendance, SGPA, CGPA, CIA/SEE marks, and simulate what-if scenarios." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="app-container navbar-container" id="navbar-container">
+      <!-- Navbar dynamically populated by js/components/navbar.js -->
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="main-content">
+    <div class="app-container">
+
+      <!-- Hero Banner -->
+      <section class="card mb-6 text-center" style="background: linear-gradient(135deg, var(--bg-surface) 0%, var(--primary-50) 100%); border-color: var(--primary-100);">
+        <div style="display: flex; justify-content: center; margin-bottom: 0.5rem;">
+          <img src="assets/logo.png" alt="AC ADEXA Logo" style="height: 110px; width: auto; object-fit: contain;" />
+        </div>
+        <p class="text-lg font-semibold text-muted mb-2">Your academics, made simple.</p>
+        <p class="text-sm text-muted max-w-lg mx-auto mb-4">
+          Calculate your marks, SGPA & CGPA. Track your progress. Plan your target grades.
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap text-xs font-semibold" style="color: var(--teal-600);">
+          <span>✓ R21 & R25 Compatible</span>
+          <span>✓ Works 100% Offline</span>
+          <span>✓ Private & Local</span>
+          <span>✓ No Login Required</span>
+        </div>
+      </section>
+
+      <!-- Saved Progress Card (If present) -->
+      <div id="saved-progress-container"></div>
+
+      <!-- Quick Calculators Section -->
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-4">⚡ Quick Calculators</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="attendance.html" class="action-card">
+            <div>
+              <div class="action-icon">📊</div>
+              <h3 class="font-bold text-base">Attendance</h3>
+              <p class="text-xs text-muted mt-1">Know exactly where you stand and how many classes you can miss.</p>
+            </div>
+          </a>
+          <a href="sgpa.html" class="action-card">
+            <div>
+              <div class="action-icon">🎯</div>
+              <h3 class="font-bold text-base">SGPA</h3>
+              <p class="text-xs text-muted mt-1">Calculate your semester grade point average with breakdown.</p>
+            </div>
+          </a>
+          <a href="cgpa.html" class="action-card">
+            <div>
+              <div class="action-icon">📈</div>
+              <h3 class="font-bold text-base">CGPA</h3>
+              <p class="text-xs text-muted mt-1">Track your cumulative performance and R25 equivalent percentage.</p>
+            </div>
+          </a>
+          <a href="marks.html" class="action-card">
+            <div>
+              <div class="action-icon">📝</div>
+              <h3 class="font-bold text-base">Marks & SEE</h3>
+              <p class="text-xs text-muted mt-1">Calculate CIA, SEE and required marks for target grades.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Plan Your Performance Section -->
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-4">🔮 Plan Your Performance</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <a href="what-if.html" class="action-card">
+            <div>
+              <div class="action-icon">🧪</div>
+              <h3 class="font-bold text-base">What-If Simulator</h3>
+              <p class="text-xs text-muted mt-1">Simulate grade changes without modifying your saved record.</p>
+            </div>
+          </a>
+          <a href="cgpa.html#planner" class="action-card">
+            <div>
+              <div class="action-icon">🎯</div>
+              <h3 class="font-bold text-base">CGPA Planner</h3>
+              <p class="text-xs text-muted mt-1">Compute required average SGPA for your target CGPA goal.</p>
+            </div>
+          </a>
+          <a href="marks.html#target" class="action-card">
+            <div>
+              <div class="action-icon">🏆</div>
+              <h3 class="font-bold text-base">Target Grade</h3>
+              <p class="text-xs text-muted mt-1">Find minimum required SEE marks to achieve desired grade.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Understand Your Performance Section -->
+      <section class="mb-6">
+        <h2 class="text-xl font-bold mb-4">💡 Understand & Report</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <a href="insights.html" class="action-card">
+            <div>
+              <div class="action-icon">📊</div>
+              <h3 class="font-bold text-base">Academic Insights</h3>
+              <p class="text-xs text-muted mt-1">Grade distributions, SGPA trends, and rule-based insights.</p>
+            </div>
+          </a>
+          <a href="reports.html" class="action-card">
+            <div>
+              <div class="action-icon">📄</div>
+              <h3 class="font-bold text-base">Semester Report</h3>
+              <p class="text-xs text-muted mt-1">Generate multi-page PDF reports and printable cards.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Privacy Notice Footer -->
+      <footer class="text-center text-xs text-muted py-6 border-t" style="border-color: var(--border-color);">
+        <p class="mb-2">🔒 <strong>Your academic data stays on your device.</strong> AC ADEXA requires no login and no backend.</p>
+        <p>AC ADEXA • Your Academic Companion • Calculate • Plan • Track • Improve</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Mobile Sticky Bottom Navigation -->
+  <nav class="mobile-nav-bar" id="mobile-nav-bar">
+    <!-- Populated by navbar.js -->
+  </nav>
+
+  <!-- Dynamic JS Engine Modules -->
+  <script src="js/data/regulations.js"></script>
+  <script src="js/core/grading.js"></script>
+  <script src="js/core/attendance.js"></script>
+  <script src="js/core/marks.js"></script>
+  <script src="js/core/sgpa.js"></script>
+  <script src="js/core/cgpa.js"></script>
+  <script src="js/core/projection.js"></script>
+
+  <script src="js/features/storage.js"></script>
+  <script src="js/features/charts.js"></script>
+  <script src="js/features/sharing.js"></script>
+
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/result-card.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+
+  <script src="js/pages/home.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(err => console.log('SW reg error:', err));
+    }
+  </script>
+</body>
+</html>

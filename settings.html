@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings & Data Management — AC ADEXA</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="app-container navbar-container" id="navbar-container"></div>
+  </header>
+
+  <main class="main-content">
+    <div class="app-container max-w-2xl">
+      <div class="mb-4">
+        <h1 class="text-2xl font-bold">Settings & Preference</h1>
+        <p class="text-sm text-muted">Manage app theme, student profile, default regulation, and local data backups.</p>
+      </div>
+
+      <!-- Appearance -->
+      <section class="card mb-4">
+        <h2 class="card-title mb-3">🎨 Appearance Theme</h2>
+        <div class="flex gap-6">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="theme" value="light" />
+            <span class="text-sm font-semibold">Light</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="theme" value="dark" />
+            <span class="text-sm font-semibold">Dark</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="theme" value="system" />
+            <span class="text-sm font-semibold">System Default</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Student Profile -->
+      <section class="card mb-4">
+        <h2 class="card-title mb-3">👤 Student Profile Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Student Name</label>
+            <input type="text" id="setting-student-name" class="form-control" placeholder="e.g. Alex Johnson" />
+          </div>
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Register / Roll Number</label>
+            <input type="text" id="setting-register-num" class="form-control" placeholder="e.g. 21CS042" />
+          </div>
+        </div>
+        <button id="save-profile-btn" class="btn btn-sm btn-primary">Save Profile</button>
+      </section>
+
+      <!-- Default Regulation -->
+      <section class="card mb-4">
+        <h2 class="card-title mb-3">📜 Academic Regulation</h2>
+        <div class="form-group mb-0">
+          <label class="form-label text-xs">Default Selected Regulation</label>
+          <select id="setting-default-reg" class="form-control">
+            <option value="R25">Regulation 25 (R25)</option>
+            <option value="R21">Regulation 21 (R21)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Local Data Management -->
+      <section class="card mb-4">
+        <h2 class="card-title mb-3">💾 Data Management & Backups</h2>
+        <p class="text-xs text-muted mb-4">Import or export your saved course data and semester records as JSON backups.</p>
+
+        <div class="flex gap-3 flex-wrap mb-4">
+          <button id="export-data-btn" class="btn btn-outline btn-sm">📤 Export My Data (JSON)</button>
+          <label class="btn btn-secondary btn-sm cursor-pointer">
+            📥 Import Backup
+            <input type="file" id="import-file-input" accept=".json" style="display: none;" />
+          </label>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
+          <button type="button" class="btn btn-danger btn-sm" onclick="ModalManager.openModal('clear-confirm-modal')">
+            ⚠️ Clear All Saved Data
+          </button>
+        </div>
+      </section>
+
+      <!-- Privacy Section -->
+      <section class="card bg-surface p-4 text-center">
+        <h3 class="font-bold text-sm mb-1">🔒 Your Academic Data Stays on Your Device</h3>
+        <p class="text-xs text-muted">
+          AC ADEXA requires no login, no account, no backend, and no database server. All calculations happen locally inside your browser.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Clear Confirmation Modal -->
+  <div id="clear-confirm-modal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Clear All Data</h3>
+        <button class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">
+          ⚠️ <strong>Warning:</strong> This action will permanently remove all locally saved AC ADEXA course records, attendance logs, and semester history.
+        </p>
+        <p class="text-xs text-muted">This action cannot be undone unless you have an exported JSON backup file.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Cancel</button>
+        <button id="confirm-clear-everything-btn" class="btn btn-danger">Clear Everything</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
+
+  <script src="js/data/regulations.js"></script>
+  <script src="js/core/grading.js"></script>
+  <script src="js/features/storage.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+  <script src="js/pages/settings.js"></script>
+</body>
+</html>

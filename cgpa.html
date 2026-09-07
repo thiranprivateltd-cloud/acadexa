@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CGPA Calculator & Planner — AC ADEXA</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="app-container navbar-container" id="navbar-container"></div>
+  </header>
+
+  <main class="main-content">
+    <div class="app-container">
+      <div class="mb-4">
+        <h1 class="text-2xl font-bold">CGPA Calculator & Target Planner</h1>
+        <p class="text-sm text-muted">Track your cumulative grade point average across semesters and plan future goals.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Semester Rows -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-bold">Completed Semesters</h2>
+            <button id="add-sem-btn" class="btn btn-sm btn-primary">+ Add Semester</button>
+          </div>
+          <div id="sem-list-container">
+            <!-- Dynamic Semester Rows -->
+          </div>
+        </div>
+
+        <!-- CGPA Hero Result Card -->
+        <div>
+          <div id="cgpa-result-container">
+            <!-- Dynamic CGPA Card -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Dedicated CGPA Planner Section -->
+      <section id="planner" class="card bg-surface p-6">
+        <h2 class="text-xl font-bold mb-3">🎯 CGPA Target Planner</h2>
+        <p class="text-sm text-muted mb-4">Calculate the required average SGPA in your remaining credits to reach your target CGPA goal.</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Current CGPA</label>
+            <input type="number" step="0.01" min="0" max="10" id="plan-current-cgpa" class="form-control" placeholder="e.g. 8.42" />
+          </div>
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Completed Credits</label>
+            <input type="number" step="0.5" min="0" id="plan-completed-credits" class="form-control" placeholder="e.g. 96" />
+          </div>
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Remaining Credits *</label>
+            <input type="number" step="0.5" min="1" id="plan-remaining-credits" class="form-control" placeholder="e.g. 64" required />
+          </div>
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Target CGPA *</label>
+            <input type="number" step="0.01" min="0" max="10" id="plan-target-cgpa" class="form-control" placeholder="e.g. 9.00" required />
+          </div>
+        </div>
+
+        <div id="cgpa-planner-result-container">
+          <!-- Dynamic Planner Result Card & Benchmark Table -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
+
+  <script src="js/data/regulations.js"></script>
+  <script src="js/core/grading.js"></script>
+  <script src="js/core/cgpa.js"></script>
+  <script src="js/core/projection.js"></script>
+  <script src="js/features/storage.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/result-card.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+  <script src="js/pages/cgpa.js"></script>
+</body>
+</html>

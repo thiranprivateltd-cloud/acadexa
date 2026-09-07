@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semester Reports & Sharing — AC ADEXA</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="app-container navbar-container" id="navbar-container"></div>
+  </header>
+
+  <main class="main-content">
+    <div class="app-container">
+      <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h1 class="text-2xl font-bold">Semester Reports & Sharing</h1>
+          <p class="text-sm text-muted">Generate multi-page PDF reports and printable image cards of your performance.</p>
+        </div>
+        <div class="flex gap-2">
+          <button id="share-image-btn" class="btn btn-outline">📤 Share Result Image</button>
+          <button id="generate-pdf-btn" class="btn btn-primary">📄 Generate PDF Report</button>
+        </div>
+      </div>
+
+      <div id="report-preview-container">
+        <!-- Dynamic Report Preview -->
+      </div>
+    </div>
+  </main>
+
+  <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
+
+  <script src="js/data/regulations.js"></script>
+  <script src="js/core/grading.js"></script>
+  <script src="js/core/attendance.js"></script>
+  <script src="js/core/sgpa.js"></script>
+  <script src="js/core/cgpa.js"></script>
+  <script src="js/features/storage.js"></script>
+  <script src="js/features/sharing.js"></script>
+  <script src="js/features/reports.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/result-card.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+  <script src="js/pages/reports.js"></script>
+</body>
+</html>

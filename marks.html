@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIA & SEE Marks Calculator — AC ADEXA</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="app-container navbar-container" id="navbar-container"></div>
+  </header>
+
+  <main class="main-content">
+    <div class="app-container">
+      <div class="mb-4">
+        <h1 class="text-2xl font-bold">CIA & SEE Marks Calculator</h1>
+        <p class="text-sm text-muted">Calculate internal CIA marks, semester exam SEE marks, and required target grade marks.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Dynamic Assessment Input Form -->
+        <div>
+          <div class="card mb-4">
+            <h2 class="card-title mb-3">⚙️ Course Assessment Scheme</h2>
+            <div class="form-group mb-3">
+              <label class="form-label">Course Type</label>
+              <select id="marks-course-type" class="form-control">
+                <!-- Dynamically populated per regulation -->
+              </select>
+            </div>
+          </div>
+
+          <div id="marks-dynamic-fields">
+            <!-- Dynamic CIA & SEE fields per regulation -->
+          </div>
+        </div>
+
+        <!-- Calculated Marks Result Hero Card -->
+        <div>
+          <div id="marks-result-container">
+            <!-- Dynamic Marks Result Card -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrated Target Grade / Required Marks Section -->
+      <section id="target" class="card bg-surface p-6">
+        <h2 class="text-xl font-bold mb-3">🏆 Target Grade & Required SEE Solver</h2>
+        <p class="text-sm text-muted mb-4">Find the minimum marks you need in the End Semester Examination (SEE) to achieve your target grade.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Current CIA Mark Obtained</label>
+            <input type="number" step="0.5" min="0" max="50" id="target-cia-input" class="form-control" placeholder="e.g. 35" />
+          </div>
+          <div class="form-group mb-0">
+            <label class="form-label text-xs">Target Desired Grade</label>
+            <select id="target-grade-select" class="form-control">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+        </div>
+
+        <div id="target-result-container">
+          <!-- Dynamic Target Solver Result Card -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
+
+  <script src="js/data/regulations.js"></script>
+  <script src="js/core/grading.js"></script>
+  <script src="js/core/marks.js"></script>
+  <script src="js/features/storage.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/result-card.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+  <script src="js/pages/marks.js"></script>
+</body>
+</html>

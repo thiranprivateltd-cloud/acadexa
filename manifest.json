@@ -1,0 +1,16 @@
+{
+  "name": "AC ADEXA — Your Academic Companion",
+  "short_name": "AC ADEXA",
+  "description": "Regulation-aware academic performance and planning platform for college students.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
