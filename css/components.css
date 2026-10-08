@@ -260,6 +260,49 @@
   border-color: var(--primary-600);
 }
 
+/* Semester Tabs */
+.sem-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-muted);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sem-tab-btn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-main);
+  border-color: var(--border-color-hover);
+}
+
+.sem-tab-btn.active {
+  background-color: var(--primary-600);
+  color: #ffffff;
+  border-color: var(--primary-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.sem-tab-btn .sem-tab-sgpa {
+  font-size: 0.725rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 700;
+}
+
+.sem-tab-btn:not(.active) .sem-tab-sgpa {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
 /* Transparent Math Explanation Accordion */
 .calc-explanation {
   margin-top: 1.25rem;
