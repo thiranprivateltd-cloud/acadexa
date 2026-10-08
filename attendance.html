@@ -16,51 +16,82 @@
 
   <main class="main-content">
     <div class="app-container">
-      <div class="mb-4">
-        <h1 class="text-2xl font-bold">Attendance Calculator & Planner</h1>
-        <p class="text-sm text-muted">Calculate your current attendance percentage and plan upcoming class attendance.</p>
+      <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+        <div>
+          <h1 class="text-2xl font-bold">Attendance Calculator & Planner</h1>
+          <p class="text-sm text-muted">Track attendance per subject and for each semester. Add subjects to see live status & projections.</p>
+        </div>
+        <div class="flex gap-2 items-center flex-wrap">
+          <button id="add-att-sem-btn" class="btn btn-secondary">
+            📁 + Add Semester
+          </button>
+          <button id="add-subject-btn" class="btn btn-primary">
+            + Add Subject
+          </button>
+        </div>
+      </div>
+
+      <!-- Semester Tabs / Bar -->
+      <div class="card mb-4 p-3 bg-surface">
+        <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+          <span class="text-xs font-bold uppercase text-muted" style="letter-spacing: 0.5px;">Select Semester</span>
+          <div class="flex items-center gap-2">
+            <span id="att-active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
+            <button id="delete-att-sem-btn" class="btn btn-sm btn-outline" style="color: #ef4444; border-color: #ef4444; padding: 0.2rem 0.6rem; font-size: 0.75rem;" title="Delete this semester's attendance records">
+              🗑️ Delete Semester
+            </button>
+          </div>
+        </div>
+        <div id="att-sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
+          <!-- Dynamic Semester Tabs -->
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Calculator Form -->
+        <!-- Subjects List & Live Input -->
         <div>
-          <div class="card mb-4">
-            <h2 class="card-title mb-3">📊 Attendance Calculator</h2>
-            <form id="att-calc-form">
-              <div class="form-group">
-                <label class="form-label">Total Classes Conducted *</label>
-                <input type="number" id="att-conducted" class="form-control" min="1" placeholder="e.g. 60" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Total Classes Attended *</label>
-                <input type="number" id="att-attended" class="form-control" min="0" placeholder="e.g. 48" required />
-              </div>
-            </form>
+          <div class="flex justify-between items-center mb-3">
+            <h2 id="att-sem-heading" class="text-lg font-bold">Semester 1 Subjects</h2>
+            <span id="att-subject-count-badge" class="text-xs text-muted">0 subjects</span>
           </div>
 
-          <div id="att-result-container">
-            <!-- Dynamic Result Card -->
+          <!-- Critical Subjects Safety Alert Box (Dynamic) -->
+          <div id="critical-alert-container"></div>
+
+          <div id="subject-list-container">
+            <!-- Dynamic Subject Cards -->
           </div>
         </div>
 
-        <!-- Attendance Planner Form -->
+        <!-- Overall Summary, Consistency & Per-Subject Projection Planner -->
         <div>
-          <div class="card mb-4">
-            <h2 class="card-title mb-3">🎯 Upcoming Attendance Planner</h2>
-            <form id="att-planner-form">
-              <div class="form-group">
-                <label class="form-label">Upcoming Classes Scheduled *</label>
-                <input type="number" id="planner-upcoming" class="form-control" min="1" placeholder="e.g. 20" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Target Attendance Percentage (%)</label>
-                <input type="number" id="planner-target" class="form-control" min="50" max="100" value="75" required />
-              </div>
-            </form>
+          <!-- Overall Semester Attendance Result & Consistency -->
+          <div id="att-overall-result-container">
+            <!-- Dynamic Overall Hero Card with Consistency -->
           </div>
 
-          <div id="planner-result-container">
-            <!-- Dynamic Planner Card -->
+          <!-- Per-Subject Upcoming Attendance Projection Planner -->
+          <div class="card mb-4" id="subject-planner-card">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="card-title mb-0">🎯 Subject Attendance Planner</h3>
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-muted font-bold">Target:</label>
+                <input type="number" id="global-target-input" class="form-control" style="width: 70px; padding: 0.2rem 0.4rem; font-size: 0.8rem;" min="50" max="100" value="75" />
+                <span class="text-xs font-bold">%</span>
+              </div>
+            </div>
+            <p class="text-xs text-muted mb-3">Plan how many classes you must attend for <strong>each subject</strong> to maintain or recover safe attendance.</p>
+            <div id="subject-planner-list">
+              <!-- Dynamic per-subject planner cards -->
+            </div>
+          </div>
+
+          <!-- Subject Status Overview Table with Consistency -->
+          <div class="card mb-4" id="subject-overview-card">
+            <h3 class="card-title mb-3">📋 Subject Attendance & Consistency Breakdown</h3>
+            <div id="subject-overview-list">
+              <!-- Summary table -->
+            </div>
           </div>
         </div>
       </div>
@@ -72,6 +103,7 @@
   <script src="js/data/regulations.js"></script>
   <script src="js/core/attendance.js"></script>
   <script src="js/features/storage.js"></script>
+  <script src="js/features/sharing.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/components/regulation-selector.js"></script>
   <script src="js/components/result-card.js"></script>
@@ -80,3 +112,5 @@
   <script src="js/pages/attendance.js"></script>
 </body>
 </html>
+
+
