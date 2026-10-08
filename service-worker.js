@@ -2,7 +2,7 @@
  * AC ADEXA - Offline Caching Service Worker
  */
 
-const CACHE_NAME = 'ac-adexa-v1';
+const CACHE_NAME = 'ac-adexa-v2';
 
 const ASSETS_TO_CACHE = [
   './',
