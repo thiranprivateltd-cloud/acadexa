@@ -155,6 +155,51 @@ class StorageManager {
     this.saveData(data);
   }
 
+  static getAttendanceData(semNumber) {
+    const data = this.loadData();
+    const targetSem = Number(semNumber) || Number(data.currentSemester) || 1;
+    if (data.semesterAttendance && data.semesterAttendance[targetSem]) {
+      return data.semesterAttendance[targetSem];
+    }
+    // Backward compatibility fallback from root data.attendance
+    if (data.attendance && (data.attendance.conducted > 0 || data.attendance.attended > 0)) {
+      return {
+        semester: targetSem,
+        subjects: [
+          { name: 'General Attendance', conducted: data.attendance.conducted || 0, attended: data.attendance.attended || 0 }
+        ]
+      };
+    }
+    return {
+      semester: targetSem,
+      subjects: []
+    };
+  }
+
+  static saveAttendanceData(semNumber, subjects) {
+    const data = this.loadData();
+    const sem = Number(semNumber) || 1;
+    if (!data.semesterAttendance) {
+      data.semesterAttendance = {};
+    }
+    data.semesterAttendance[sem] = {
+      semester: sem,
+      subjects: JSON.parse(JSON.stringify(subjects || []))
+    };
+
+    // Keep data.attendance in sync with current semester totals for home/insights
+    let totalC = 0;
+    let totalA = 0;
+    (subjects || []).forEach(s => {
+      totalC += Number(s.conducted) || 0;
+      totalA += Number(s.attended) || 0;
+    });
+    data.attendance = { conducted: totalC, attended: totalA };
+
+    this.saveData(data);
+    return data.semesterAttendance[sem];
+  }
+
   static getTheme() {
     return localStorage.getItem(THEME_KEY) || 'system';
   }
@@ -181,3 +226,4 @@ if (typeof module !== 'undefined' && module.exports) {
 if (typeof global !== 'undefined') {
   global.StorageManager = StorageManager;
 }
+
