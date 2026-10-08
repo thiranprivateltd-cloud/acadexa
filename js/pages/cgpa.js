@@ -57,12 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function syncSemestersFromDOM() {
     const rows = document.querySelectorAll('.sem-row');
     const updated = [];
-    rows.forEach((row) => {
-      const semester = Number(row.querySelector('.sem-num-input').value) || (updated.length + 1);
+    rows.forEach((row, idx) => {
+      const semester = Number(row.querySelector('.sem-num-input').value) || (idx + 1);
       const sgpa = Number(row.querySelector('.sem-sgpa-input').value) || 0;
       const credits = Number(row.querySelector('.sem-credits-input').value) || 0;
 
-      updated.push({ semester, sgpa, credits });
+      // Retain existing course list if available from previous state
+      const existing = semesters[idx] || (data.semesters || []).find(s => Number(s.semester) === semester);
+      const courses = (existing && existing.courses) ? existing.courses : [];
+
+      updated.push({ semester, sgpa, credits, courses });
     });
     semesters = updated;
   }
