@@ -16,19 +16,44 @@
 
   <main class="main-content">
     <div class="app-container">
-      <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+      <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
         <div>
           <h1 class="text-2xl font-bold">SGPA Calculator</h1>
-          <p class="text-sm text-muted">Calculate your Semester Grade Point Average with full mathematical transparency.</p>
+          <p class="text-sm text-muted">Calculate & save your Semester Grade Point Average separately for each semester.</p>
         </div>
-        <button id="add-course-btn" class="btn btn-primary">
-          + Add Course
-        </button>
+        <div class="flex gap-2 items-center flex-wrap">
+          <button id="add-sem-tab-btn" class="btn btn-secondary">
+            📁 + Add Semester
+          </button>
+          <button id="add-course-btn" class="btn btn-primary">
+            + Add Course
+          </button>
+        </div>
+      </div>
+
+      <!-- Semester Tabs / Bar -->
+      <div class="card mb-4 p-3 bg-surface">
+        <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+          <span class="text-xs font-bold uppercase text-muted" style="letter-spacing: 0.5px;">Select Semester</span>
+          <div class="flex items-center gap-2">
+            <span id="active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
+            <button id="delete-curr-sem-btn" class="btn btn-sm btn-outline" style="color: #ef4444; border-color: #ef4444; padding: 0.2rem 0.6rem; font-size: 0.75rem;" title="Delete this semester's courses and SGPA record">
+              🗑️ Delete Semester
+            </button>
+          </div>
+        </div>
+        <div id="sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
+          <!-- Dynamic Semester Tabs -->
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Course Entry Rows -->
         <div>
+          <div class="flex justify-between items-center mb-3">
+            <h2 id="sem-heading" class="text-lg font-bold">Semester 1 Courses</h2>
+            <span id="course-count-badge" class="text-xs text-muted">0 courses</span>
+          </div>
           <div id="course-list-container">
             <!-- Dynamic course rows -->
           </div>
