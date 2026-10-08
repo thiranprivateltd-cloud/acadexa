@@ -54,3 +54,15 @@ function renderNavbar(activePageKey = 'home') {
     `;
   }
 }
+
+// Auto-register service worker across all pages cleanly
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => {
+        reg.update();
+      })
+      .catch(err => console.debug('SW reg info:', err));
+  });
+}
+
