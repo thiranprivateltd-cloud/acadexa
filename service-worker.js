@@ -2,7 +2,7 @@
  * AC ADEXA - Offline Caching Service Worker
  */
 
-const CACHE_NAME = 'ac-adexa-v2';
+const CACHE_NAME = 'ac-adexa-v3';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -16,7 +16,7 @@ const ASSETS_TO_CACHE = [
   './reports.html',
   './settings.html',
   './regulation.html',
-  './assets/logo.svg',
+  './assets/logo.png',
   './assets/favicon.svg',
   './css/style.css',
   './css/components.css',
@@ -53,9 +53,10 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return cache.addAll(ASSETS_TO_CACHE).catch(err => console.warn('Cache addAll warning:', err));
     })
   );
 });
@@ -66,15 +67,33 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
+// Network-First with Cache Fallback for reliable navigation & live updates
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
-      return fetch(event.request);
-    })
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return networkResponse;
+      })
+      .catch(() => {
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) return cachedResponse;
+          if (event.request.mode === 'navigate') {
+            return caches.match('./index.html') || caches.match('/index.html');
+          }
+        });
+      })
   );
 });
+
