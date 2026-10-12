@@ -99,29 +99,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let helperText = '';
     if (isOverAttended) {
-      helperText = '<span style="color: #ef4444; font-weight: 700;">❌ Attended classes cannot exceed conducted!</span>';
+      helperText = '<span style="color: var(--status-fail-text); font-weight: 600;">❌ Attended classes cannot exceed conducted!</span>';
     } else if (conducted > 0) {
       if (metrics.percentage >= targetPercentage) {
-        helperText = `<span style="color: #10b981; font-weight: 600;">✓ Safe: Can miss up to <strong>${metrics.maxMissable}</strong> class(es)</span>`;
+        helperText = `<span style="color: var(--emerald-primary); font-weight: 500;">✓ Safe: Can miss up to <strong>${metrics.maxMissable}</strong> class(es)</span>`;
       } else {
-        helperText = `<span style="color: #ef4444; font-weight: 700;">⚠️ Must attend <strong>${metrics.requiredConsecutive}</strong> consecutive class(es) for ${targetPercentage}%</span>`;
+        helperText = `<span style="color: var(--status-fail-text); font-weight: 600;">⚠️ Must attend <strong>${metrics.requiredConsecutive}</strong> consecutive class(es) for ${targetPercentage}%</span>`;
       }
     }
 
     return `
       <div class="att-subject-row" data-subject-index="${index}">
         <div class="flex justify-between items-center mb-2 flex-wrap gap-2">
-          <div class="font-bold text-sm" style="flex: 1; min-width: 160px;">
-            <input type="text" class="form-control sub-name-input" value="${sub.name || `Subject ${index + 1}`}" placeholder="Subject Name (e.g. Mathematics)" style="font-weight: 700; padding: 0.35rem 0.6rem; font-size: 0.9rem;" />
+          <div class="font-semibold text-sm" style="flex: 1; min-width: 160px;">
+            <input type="text" class="form-control sub-name-input" value="${sub.name || `Subject ${index + 1}`}" placeholder="Subject Name (e.g. Mathematics)" style="font-weight: 600; padding: 0.35rem 0.6rem; font-size: 0.85rem;" />
           </div>
           <div class="flex items-center gap-2">
-            <span class="consistency-badge ${consistency.colorClass}" style="background-color: var(--bg-muted); border: 1px solid var(--border-color);" title="Consistency: ${consistency.description}">
+            <span class="consistency-badge ${consistency.colorClass}" title="Consistency: ${consistency.description}">
               ${consistency.badge} ${consistency.level}
             </span>
-            <span class="status-badge ${isOverAttended ? 'fail' : metrics.statusClass}" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">
-              ${isOverAttended ? '🔴 ERROR' : `${metrics.badgeIcon} ${metrics.percentage.toFixed(1)}%`}
+            <span class="status-badge ${isOverAttended ? 'fail' : metrics.statusClass}" style="font-size: 0.725rem; padding: 0.15rem 0.45rem;">
+              ${isOverAttended ? 'ERROR' : `${metrics.percentage.toFixed(1)}%`}
             </span>
-            <button type="button" class="btn btn-sm btn-outline remove-subject-btn" style="color: #ef4444; border-color: #ef4444; padding: 0.2rem 0.5rem; font-size: 0.75rem;" title="Remove Subject">
+            <button type="button" class="btn btn-sm btn-outline remove-subject-btn" style="color: var(--status-fail-text); border-color: rgba(248, 113, 113, 0.3); padding: 0.15rem 0.45rem; font-size: 0.75rem;" title="Remove Subject">
               &times;
             </button>
           </div>
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="flex justify-between items-center mt-2 text-xs text-muted">
           <span>${helperText}</span>
-          <span style="font-weight: 600;">${attended}/${conducted} Classes</span>
+          <span style="font-weight: 500; font-family: var(--font-mono);">${attended}/${conducted} Classes</span>
         </div>
       </div>
     `;
