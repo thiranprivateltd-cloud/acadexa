@@ -1,5 +1,6 @@
 /**
- * AC ADEXA - Result Card & Transparent Math Explanation Component
+ * ACADEXA - Result Card & Transparent Math Explanation Component
+ * Visual Direction: Direction C: Graphite & Emerald
  */
 
 function renderResultCard(params) {
@@ -10,18 +11,18 @@ function renderResultCard(params) {
   return `
     <div class="result-hero card">
       <div class="result-hero-label">${title}</div>
-      <div class="result-hero-value">${value} ${unit ? `<span style="font-size: 1.5rem;">${unit}</span>` : ''}</div>
+      <div class="result-hero-value">${value} ${unit ? `<span style="font-size: 1.25rem; font-weight: 500; color: var(--text-secondary);">${unit}</span>` : ''}</div>
       ${statusText ? `
         <div class="mt-2">
-          <span class="status-badge ${statusClass || 'info'}">${badgeIcon || '🔵'} ${statusText}</span>
+          <span class="status-badge ${statusClass || 'info'}">${badgeIcon || ''} ${statusText}</span>
         </div>
       ` : ''}
 
       ${explanation ? `
         <div class="calc-explanation">
           <button type="button" class="calc-toggle" onclick="document.getElementById('${uniqueId}').classList.toggle('open')">
-            <span>📐 How is this calculated?</span>
-            <span style="font-size: 0.75rem;">▼</span>
+            <span>📐 Calculation Breakdown</span>
+            <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
           </button>
           <div id="${uniqueId}" class="calc-details text-left mt-2">
 ${explanation}
