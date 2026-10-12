@@ -3,51 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What-If Academic Simulator — AC ADEXA</title>
+  <title>What-If Academic Simulator — Acadexa</title>
+  <meta name="description" content="Simulate potential grade changes in an isolated sandbox environment without altering official saved records." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="app-container navbar-container" id="navbar-container"></div>
-  </header>
+  <div class="app-shell">
+    <div id="sidebar-container"></div>
 
-  <main class="main-content">
-    <div class="app-container">
-      <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <div>
-          <h1 class="text-2xl font-bold">What-If Academic Simulator</h1>
-          <p class="text-sm text-muted">Simulate potential grade improvements in sandbox mode without altering your saved records.</p>
-        </div>
-        <div class="flex gap-2">
-          <button id="whatif-reset-btn" class="btn btn-secondary btn-sm">Reset Simulation</button>
-          <button id="whatif-apply-btn" class="btn btn-primary btn-sm">Apply to Saved Data</button>
-        </div>
-      </div>
+    <div class="app-main-wrapper">
+      <div id="topbar-container"></div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Course Sandbox Inputs -->
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <h2 class="text-lg font-bold">Sandbox Courses</h2>
-            <button id="whatif-add-course-btn" class="btn btn-sm btn-outline">+ Add Course</button>
+      <main class="main-content">
+        <div class="app-container">
+          <div class="flex justify-between items-start mb-6 flex-wrap gap-4">
+            <div>
+              <h1 class="text-2xl font-bold mb-1">What-If Academic Simulator</h1>
+              <p class="text-sm text-secondary">Model hypothetical grade adjustments and re-evaluations in a safe sandbox before applying changes to your saved records.</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="whatif-reset-btn" class="btn btn-secondary btn-sm">Reset Simulation</button>
+              <button id="whatif-apply-btn" class="btn btn-primary btn-sm">Apply to Saved Data</button>
+            </div>
           </div>
-          <div id="whatif-course-list">
-            <!-- Dynamic Sandbox Course Rows -->
-          </div>
-        </div>
 
-        <!-- Simulation Result & Impact Summary -->
-        <div>
-          <div id="whatif-result-container">
-            <!-- Dynamic Summary Card -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Course Sandbox Inputs -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <h2 class="text-base font-semibold">Sandbox Course Models</h2>
+                <button id="whatif-add-course-btn" class="btn btn-sm btn-outline">+ Add Course</button>
+              </div>
+              <div id="whatif-course-list">
+                <!-- Dynamic Sandbox Course Rows -->
+              </div>
+            </div>
+
+            <!-- Simulation Result & Impact Summary -->
+            <div>
+              <div id="whatif-result-container">
+                <!-- Dynamic Summary Card -->
+              </div>
+            </div>
           </div>
+
         </div>
-      </div>
+      </main>
     </div>
-  </main>
+  </div>
 
   <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
 
@@ -58,6 +64,7 @@
   <script src="js/features/whatif.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/course-card.js"></script>
   <script src="js/components/result-card.js"></script>
   <script src="js/components/modal.js"></script>
   <script src="js/components/feedback.js"></script>

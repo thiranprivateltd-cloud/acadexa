@@ -1,11 +1,11 @@
 {
-  "name": "AC ADEXA — Your Academic Companion",
-  "short_name": "AC ADEXA",
-  "description": "Regulation-aware academic performance and planning platform for college students.",
+  "name": "Acadexa — Academic Productivity Suite",
+  "short_name": "Acadexa",
+  "description": "Regulation-aware academic performance, attendance and scenario planning platform.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#2563eb",
+  "background_color": "#101211",
+  "theme_color": "#34D399",
   "icons": [
     {
       "src": "assets/favicon.svg",

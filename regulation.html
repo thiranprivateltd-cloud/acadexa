@@ -3,46 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Regulation Information — AC ADEXA</title>
+  <title>Academic Regulation Information — Acadexa</title>
+  <meta name="description" content="Detailed grading rules, pass criteria, and formulas for Regulation 21 (R21) and Regulation 25 (R25)." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="app-container navbar-container" id="navbar-container"></div>
-  </header>
+  <div class="app-shell">
+    <div id="sidebar-container"></div>
 
-  <main class="main-content">
-    <div class="app-container">
-      <div class="mb-4">
-        <h1 class="text-2xl font-bold">Academic Regulation Information</h1>
-        <p class="text-sm text-muted">Detailed grading rules, assessment weightages, pass criteria, and formulas for Regulation 21 (R21) and Regulation 25 (R25).</p>
-      </div>
+    <div class="app-main-wrapper">
+      <div id="topbar-container"></div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- R25 Column -->
-        <div>
-          <h2 class="text-xl font-bold mb-3" style="color: var(--teal-600);">Regulation 25 (R25)</h2>
-          <div id="r25-info-container"></div>
+      <main class="main-content">
+        <div class="app-container">
+          <div class="mb-6">
+            <h1 class="text-2xl font-bold mb-1">Academic Regulation Information</h1>
+            <p class="text-sm text-secondary">Verified assessment weightages, grading schemas, minimum pass rules, and formulas for Regulation 21 (R21) and Regulation 25 (R25).</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- R25 Column -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="status-badge pass" style="font-family: var(--font-mono);">R25</span>
+                <h2 class="text-lg font-semibold">Regulation 25 (R25)</h2>
+              </div>
+              <div id="r25-info-container"></div>
+            </div>
+
+            <!-- R21 Column -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="status-badge info" style="font-family: var(--font-mono);">R21</span>
+                <h2 class="text-lg font-semibold">Regulation 21 (R21)</h2>
+              </div>
+              <div id="r21-info-container"></div>
+            </div>
+          </div>
+
+          <!-- Academic Notice -->
+          <footer class="card mt-8 p-4 text-center">
+            <p class="text-xs text-muted">
+              Acadexa is an independent academic calculation and planning platform. Always verify final grade transcripts with your institution's registrar office.
+            </p>
+          </footer>
         </div>
-
-        <!-- R21 Column -->
-        <div>
-          <h2 class="text-xl font-bold mb-3" style="color: var(--primary-600);">Regulation 21 (R21)</h2>
-          <div id="r21-info-container"></div>
-        </div>
-      </div>
-
-      <!-- Legal Disclaimer -->
-      <footer class="card bg-muted text-center text-xs text-muted mt-6 p-4">
-        <p>
-          ⚠️ <strong>Notice:</strong> AC ADEXA is an informational calculation and planning tool. Students should always verify official academic results and regulations with their institution's academic handbook or registrar.
-        </p>
-      </footer>
+      </main>
     </div>
-  </main>
+  </div>
 
   <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
 

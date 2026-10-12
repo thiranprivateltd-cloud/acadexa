@@ -3,78 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SGPA Calculator — AC ADEXA</title>
+  <title>SGPA Calculator — Acadexa</title>
+  <meta name="description" content="Calculate and persist your Semester Grade Point Average with course-wise credit and grade points." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="app-container navbar-container" id="navbar-container"></div>
-  </header>
+  <div class="app-shell">
+    <div id="sidebar-container"></div>
 
-  <main class="main-content">
-    <div class="app-container">
-      <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
-        <div>
-          <h1 class="text-2xl font-bold">SGPA Calculator</h1>
-          <p class="text-sm text-muted">Calculate & save your Semester Grade Point Average separately for each semester.</p>
-        </div>
-        <div class="flex gap-2 items-center flex-wrap">
-          <button id="add-sem-tab-btn" class="btn btn-secondary">
-            📁 + Add Semester
-          </button>
-          <button id="add-course-btn" class="btn btn-primary">
-            + Add Course
-          </button>
-        </div>
-      </div>
+    <div class="app-main-wrapper">
+      <div id="topbar-container"></div>
 
-      <!-- Semester Tabs / Bar -->
-      <div class="card mb-4 p-3 bg-surface">
-        <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
-          <span class="text-xs font-bold uppercase text-muted" style="letter-spacing: 0.5px;">Select Semester</span>
-          <div class="flex items-center gap-2">
-            <span id="active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
-            <button id="delete-curr-sem-btn" class="btn btn-sm btn-outline" style="color: #ef4444; border-color: #ef4444; padding: 0.2rem 0.6rem; font-size: 0.75rem;" title="Delete this semester's courses and SGPA record">
-              🗑️ Delete Semester
-            </button>
-          </div>
-        </div>
-        <div id="sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
-          <!-- Dynamic Semester Tabs -->
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Course Entry Rows -->
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <h2 id="sem-heading" class="text-lg font-bold">Semester 1 Courses</h2>
-            <span id="course-count-badge" class="text-xs text-muted">0 courses</span>
-          </div>
-          <div id="course-list-container">
-            <!-- Dynamic course rows -->
-          </div>
-        </div>
-
-        <!-- Result Card & Analytics -->
-        <div>
-          <div id="sgpa-result-container">
-            <!-- Dynamic SGPA Hero Card -->
-          </div>
-
-          <div class="card mt-4">
-            <h3 class="card-title mb-3">📊 Grade Distribution</h3>
-            <div id="grade-chart-container" style="height: 220px;">
-              <!-- SVG Bar Chart -->
+      <main class="main-content">
+        <div class="app-container">
+          <div class="flex justify-between items-start mb-6 flex-wrap gap-4">
+            <div>
+              <h1 class="text-2xl font-bold mb-1">SGPA Calculator</h1>
+              <p class="text-sm text-secondary">Calculate and save your Semester Grade Point Average with regulation-compliant point mappings.</p>
+            </div>
+            <div class="flex gap-2 items-center flex-wrap">
+              <button id="add-sem-tab-btn" class="btn btn-secondary btn-sm">
+                + Add Semester
+              </button>
+              <button id="add-course-btn" class="btn btn-primary btn-sm">
+                + Add Course
+              </button>
             </div>
           </div>
+
+          <!-- Semester Bar -->
+          <div class="card mb-6 p-3">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+              <span class="text-xs font-semibold text-muted" style="letter-spacing: 0.04em;">ACADEMIC SEMESTERS</span>
+              <div class="flex items-center gap-2">
+                <span id="active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
+                <button id="delete-curr-sem-btn" class="btn btn-sm btn-outline" style="color: var(--status-fail-text); border-color: rgba(248, 113, 113, 0.3); padding: 0.2rem 0.5rem; font-size: 0.725rem;" title="Delete this semester's courses and SGPA record">
+                  Delete Semester
+                </button>
+              </div>
+            </div>
+            <div id="sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
+              <!-- Dynamic Semester Tabs -->
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left: Course List -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <h2 id="sem-heading" class="text-base font-semibold">Semester 1 Courses</h2>
+                <span id="course-count-badge" class="text-xs text-muted tabular-nums">0 courses</span>
+              </div>
+              <div id="course-list-container">
+                <!-- Dynamic course rows -->
+              </div>
+            </div>
+
+            <!-- Right: Results & Grade Chart -->
+            <div>
+              <div id="sgpa-result-container">
+                <!-- Dynamic SGPA Hero Card -->
+              </div>
+
+              <div class="card mt-4">
+                <h3 class="card-title mb-3">Grade Distribution</h3>
+                <div id="grade-chart-container" style="height: 220px;">
+                  <!-- SVG Bar Chart -->
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
+      </main>
     </div>
-  </main>
+  </div>
 
   <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
 

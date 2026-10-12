@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Official Timetable — Acadexa</title>
+  <meta name="description" content="View official faculty-managed academic timetable and lecture schedule." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="sidebar-container"></div>
+
+    <div class="app-main-wrapper">
+      <div id="topbar-container"></div>
+
+      <main class="main-content">
+        <div class="app-container">
+          <div class="flex justify-between items-start mb-6 flex-wrap gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="status-badge info text-xs">Faculty-Managed</span>
+                <span class="text-xs text-muted">Read-Only Official Schedule</span>
+              </div>
+              <h1 class="text-2xl font-bold mb-1">Official Academic Timetable</h1>
+              <p class="text-sm text-secondary">View designated lecture hours, faculty instructors, lecture hall allocations, and weekly schedule.</p>
+            </div>
+            <div class="flex gap-2 items-center flex-wrap">
+              <span class="status-badge pass text-xs">Academic Term: Even Sem 2026</span>
+            </div>
+          </div>
+
+          <!-- Notice Banner regarding timetable constraint -->
+          <div class="card mb-6 p-3" style="border-left: 3px solid var(--emerald-primary); background-color: var(--bg-surface);">
+            <div class="flex items-start gap-2">
+              <span class="text-emerald" style="font-size: 1rem;">ℹ</span>
+              <div>
+                <strong class="text-xs text-main">Institutional Schedule Policy</strong>
+                <p class="text-xs text-muted mt-0.5">
+                  The official timetable is centrally scheduled and faculty-managed. Students can view course periods, faculty allocations, and venue coordinates here, but cannot modify subjects, faculty assignments, class timings, or official schedules.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day Filter Selector -->
+          <div class="card mb-6 p-3">
+            <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+              <span class="text-xs font-semibold text-muted" style="letter-spacing: 0.04em;">WEEKDAY FILTER</span>
+              <span class="text-xs text-muted">Select day or view complete weekly grid</span>
+            </div>
+            <div class="flex gap-2 flex-wrap" id="timetable-day-tabs">
+              <button class="sem-tab-btn active" data-day="all">All Days</button>
+              <button class="sem-tab-btn" data-day="Mon">Monday</button>
+              <button class="sem-tab-btn" data-day="Tue">Tuesday</button>
+              <button class="sem-tab-btn" data-day="Wed">Wednesday</button>
+              <button class="sem-tab-btn" data-day="Thu">Thursday</button>
+              <button class="sem-tab-btn" data-day="Fri">Friday</button>
+            </div>
+          </div>
+
+          <!-- Timetable Grid / Schedule View -->
+          <div class="card mb-6" style="padding: 1.25rem;">
+            <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+              <h2 class="card-title">Schedule Overview</h2>
+              <span class="text-xs text-muted">Hours: 08:30 AM – 04:30 PM</span>
+            </div>
+
+            <div class="data-table-wrapper">
+              <table class="data-table" id="timetable-table">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Time Slot</th>
+                    <th>Course Code & Title</th>
+                    <th>Course Type</th>
+                    <th>Faculty</th>
+                    <th>Room / Lab</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="timetable-tbody">
+                  <!-- Dynamically rendered read-only schedule rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Course Faculty Legend Card -->
+          <div class="card p-4">
+            <h3 class="card-title mb-3">Faculty & Venue Directory</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="faculty-legend">
+              <div class="p-3 rounded" style="background-color: var(--bg-elevated); border: 1px solid var(--border-color);">
+                <div class="text-xs text-emerald font-semibold font-mono">CS3401</div>
+                <div class="text-sm font-semibold text-main mt-0.5">Algorithms & Complexity</div>
+                <div class="text-xs text-muted mt-1">Faculty: Dr. K. Ramanathan</div>
+                <div class="text-xs text-muted">Venue: Tech Block LH-204</div>
+              </div>
+
+              <div class="p-3 rounded" style="background-color: var(--bg-elevated); border: 1px solid var(--border-color);">
+                <div class="text-xs text-emerald font-semibold font-mono">CS3402</div>
+                <div class="text-sm font-semibold text-main mt-0.5">Operating Systems Lab</div>
+                <div class="text-xs text-muted mt-1">Faculty: Prof. S. Meenakshi</div>
+                <div class="text-xs text-muted">Venue: Systems Lab 2 (Ground Floor)</div>
+              </div>
+
+              <div class="p-3 rounded" style="background-color: var(--bg-elevated); border: 1px solid var(--border-color);">
+                <div class="text-xs text-emerald font-semibold font-mono">MA3451</div>
+                <div class="text-sm font-semibold text-main mt-0.5">Discrete Mathematics</div>
+                <div class="text-xs text-muted mt-1">Faculty: Dr. V. Sundaram</div>
+                <div class="text-xs text-muted">Venue: Ramanujan Hall LH-102</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
+
+  <script src="js/data/regulations.js"></script>
+  <script src="js/features/storage.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/regulation-selector.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/feedback.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      StorageManager.applyTheme(StorageManager.getTheme());
+      renderNavbar('timetable');
+      initRegulationSelector();
+      ModalManager.initModalTriggers();
+      initFeedbackModal();
+
+      const SCHEDULE = [
+        { day: 'Mon', time: '08:30 - 09:30', code: 'CS3401', title: 'Algorithms & Complexity', type: 'Theory', faculty: 'Dr. K. Ramanathan', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Mon', time: '09:30 - 10:30', code: 'MA3451', title: 'Discrete Mathematics', type: 'Theory', faculty: 'Dr. V. Sundaram', room: 'LH-102', status: 'Scheduled' },
+        { day: 'Mon', time: '10:45 - 12:45', code: 'CS3402', title: 'Operating Systems Lab', type: 'Laboratory', faculty: 'Prof. S. Meenakshi', room: 'Systems Lab 2', status: 'Scheduled' },
+        { day: 'Mon', time: '01:30 - 02:30', code: 'CS3403', title: 'Database Management Systems', type: 'Theory', faculty: 'Dr. R. Anitha', room: 'LH-204', status: 'Scheduled' },
+
+        { day: 'Tue', time: '08:30 - 09:30', code: 'CS3404', title: 'Computer Networks', type: 'Theory', faculty: 'Dr. P. Suresh', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Tue', time: '09:30 - 10:30', code: 'CS3401', title: 'Algorithms & Complexity', type: 'Theory', faculty: 'Dr. K. Ramanathan', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Tue', time: '10:45 - 11:45', code: 'MA3451', title: 'Discrete Mathematics', type: 'Theory', faculty: 'Dr. V. Sundaram', room: 'LH-102', status: 'Scheduled' },
+        { day: 'Tue', time: '01:30 - 03:30', code: 'CS3405', title: 'DBMS Lab & Mini Project', type: 'Laboratory', faculty: 'Dr. R. Anitha', room: 'Database Lab', status: 'Scheduled' },
+
+        { day: 'Wed', time: '08:30 - 09:30', code: 'MA3451', title: 'Discrete Mathematics', type: 'Theory', faculty: 'Dr. V. Sundaram', room: 'LH-102', status: 'Scheduled' },
+        { day: 'Wed', time: '09:30 - 10:30', code: 'CS3403', title: 'Database Management Systems', type: 'Theory', faculty: 'Dr. R. Anitha', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Wed', time: '10:45 - 11:45', code: 'CS3404', title: 'Computer Networks', type: 'Theory', faculty: 'Dr. P. Suresh', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Wed', time: '01:30 - 03:30', code: 'CS3406', title: 'Design & Analysis of Algorithms Lab', type: 'Laboratory', faculty: 'Dr. K. Ramanathan', room: 'Algorithms Lab', status: 'Scheduled' },
+
+        { day: 'Thu', time: '08:30 - 09:30', code: 'CS3401', title: 'Algorithms & Complexity', type: 'Theory', faculty: 'Dr. K. Ramanathan', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Thu', time: '09:30 - 10:30', code: 'CS3404', title: 'Computer Networks', type: 'Theory', faculty: 'Dr. P. Suresh', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Thu', time: '10:45 - 12:45', code: 'HS3401', title: 'Professional Communication Lab', type: 'Practical', faculty: 'Prof. E. Shalini', room: 'Language Lab', status: 'Scheduled' },
+        { day: 'Thu', time: '01:30 - 02:30', code: 'CS3403', title: 'Database Management Systems', type: 'Theory', faculty: 'Dr. R. Anitha', room: 'LH-204', status: 'Scheduled' },
+
+        { day: 'Fri', time: '08:30 - 09:30', code: 'CS3404', title: 'Computer Networks', type: 'Theory', faculty: 'Dr. P. Suresh', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Fri', time: '09:30 - 10:30', code: 'MA3451', title: 'Discrete Mathematics', type: 'Theory', faculty: 'Dr. V. Sundaram', room: 'LH-102', status: 'Scheduled' },
+        { day: 'Fri', time: '10:45 - 11:45', code: 'CS3403', title: 'Database Management Systems', type: 'Theory', faculty: 'Dr. R. Anitha', room: 'LH-204', status: 'Scheduled' },
+        { day: 'Fri', time: '01:30 - 03:30', code: 'CS3407', title: 'Networks Simulation Lab', type: 'Laboratory', faculty: 'Dr. P. Suresh', room: 'Networks Lab', status: 'Scheduled' }
+      ];
+
+      const tbody = document.getElementById('timetable-tbody');
+      const tabs = document.querySelectorAll('#timetable-day-tabs button');
+
+      function renderSchedule(filterDay = 'all') {
+        const rows = filterDay === 'all' ? SCHEDULE : SCHEDULE.filter(s => s.day === filterDay);
+        tbody.innerHTML = rows.map(r => `
+          <tr>
+            <td style="font-weight: 600; color: var(--text-main);">${r.day}</td>
+            <td class="font-mono text-xs" style="white-space: nowrap;">${r.time}</td>
+            <td>
+              <span class="font-semibold text-main">${r.title}</span>
+              <span class="text-xs text-muted font-mono" style="display: block;">${r.code}</span>
+            </td>
+            <td>
+              <span class="status-badge ${r.type === 'Laboratory' || r.type === 'Practical' ? 'info' : 'pass'}" style="font-size: 0.7rem;">
+                ${r.type}
+              </span>
+            </td>
+            <td class="text-xs text-secondary">${r.faculty}</td>
+            <td class="text-xs font-mono text-secondary">${r.room}</td>
+            <td>
+              <span class="status-badge pass" style="font-size: 0.7rem;">
+                ${r.status}
+              </span>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabs.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderSchedule(btn.getAttribute('data-day'));
+        });
+      });
+
+      renderSchedule('all');
+    });
+  </script>
+</body>
+</html>

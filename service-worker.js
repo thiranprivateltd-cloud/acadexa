@@ -2,7 +2,7 @@
  * AC ADEXA - Offline Caching Service Worker
  */
 
-const CACHE_NAME = 'ac-adexa-v3';
+const CACHE_NAME = 'acadexa-graphite-emerald-v1';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -11,6 +11,7 @@ const ASSETS_TO_CACHE = [
   './sgpa.html',
   './cgpa.html',
   './marks.html',
+  './timetable.html',
   './what-if.html',
   './insights.html',
   './reports.html',

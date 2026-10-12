@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Semester Reports & Sharing — AC ADEXA</title>
+  <title>Semester Reports & Sharing — Acadexa</title>
+  <meta name="description" content="Generate multi-page PDF records and clean academic performance summary cards." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="app-container navbar-container" id="navbar-container"></div>
-  </header>
+  <div class="app-shell">
+    <div id="sidebar-container"></div>
 
-  <main class="main-content">
-    <div class="app-container">
-      <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <div>
-          <h1 class="text-2xl font-bold">Semester Reports & Sharing</h1>
-          <p class="text-sm text-muted">Generate multi-page PDF reports and printable image cards of your performance.</p>
-        </div>
-        <div class="flex gap-2">
-          <button id="share-image-btn" class="btn btn-outline">📤 Share Result Image</button>
-          <button id="generate-pdf-btn" class="btn btn-primary">📄 Generate PDF Report</button>
-        </div>
-      </div>
+    <div class="app-main-wrapper">
+      <div id="topbar-container"></div>
 
-      <div id="report-preview-container">
-        <!-- Dynamic Report Preview -->
-      </div>
+      <main class="main-content">
+        <div class="app-container">
+          <div class="flex justify-between items-start mb-6 flex-wrap gap-4">
+            <div>
+              <h1 class="text-2xl font-bold mb-1">Semester Reports & Sharing</h1>
+              <p class="text-sm text-secondary">Export structured academic performance cards and printable records for verification or archiving.</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="share-image-btn" class="btn btn-secondary btn-sm">Share Result Image</button>
+              <button id="generate-pdf-btn" class="btn btn-primary btn-sm">Generate PDF Report</button>
+            </div>
+          </div>
+
+          <div id="report-preview-container">
+            <!-- Dynamic Report Preview -->
+          </div>
+
+        </div>
+      </main>
     </div>
-  </main>
+  </div>
 
   <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
 

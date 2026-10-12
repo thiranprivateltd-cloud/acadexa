@@ -3,103 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Attendance Calculator & Planner — AC ADEXA</title>
+  <title>Attendance Calculator & Planner — Acadexa</title>
+  <meta name="description" content="Calculate current attendance percentages, track subject consistency, and simulate future class planning under academic regulations." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="app-container navbar-container" id="navbar-container"></div>
-  </header>
+  <div class="app-shell">
+    <!-- Stable Sidebar Shell -->
+    <div id="sidebar-container"></div>
 
-  <main class="main-content">
-    <div class="app-container">
-      <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
-        <div>
-          <h1 class="text-2xl font-bold">Attendance Calculator & Planner</h1>
-          <p class="text-sm text-muted">Track attendance per subject and for each semester. Add subjects to see live status & projections.</p>
-        </div>
-        <div class="flex gap-2 items-center flex-wrap">
-          <button id="add-att-sem-btn" class="btn btn-secondary">
-            📁 + Add Semester
-          </button>
-          <button id="add-subject-btn" class="btn btn-primary">
-            + Add Subject
-          </button>
-        </div>
-      </div>
+    <div class="app-main-wrapper">
+      <!-- Compact Topbar -->
+      <div id="topbar-container"></div>
 
-      <!-- Semester Tabs / Bar -->
-      <div class="card mb-4 p-3 bg-surface">
-        <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
-          <span class="text-xs font-bold uppercase text-muted" style="letter-spacing: 0.5px;">Select Semester</span>
-          <div class="flex items-center gap-2">
-            <span id="att-active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
-            <button id="delete-att-sem-btn" class="btn btn-sm btn-outline" style="color: #ef4444; border-color: #ef4444; padding: 0.2rem 0.6rem; font-size: 0.75rem;" title="Delete this semester's attendance records">
-              🗑️ Delete Semester
-            </button>
-          </div>
-        </div>
-        <div id="att-sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
-          <!-- Dynamic Semester Tabs -->
-        </div>
-      </div>
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="app-container">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Subjects List & Live Input -->
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <h2 id="att-sem-heading" class="text-lg font-bold">Semester 1 Subjects</h2>
-            <span id="att-subject-count-badge" class="text-xs text-muted">0 subjects</span>
+          <!-- Section A: Page Header with clear purpose -->
+          <div class="flex justify-between items-start mb-6 flex-wrap gap-4">
+            <div>
+              <h1 class="text-2xl font-bold mb-1">Attendance Calculator & Planner</h1>
+              <p class="text-sm text-secondary">Monitor subject-wise attendance percentages, test target thresholds, and plan upcoming classes.</p>
+            </div>
+            <div class="flex gap-2 items-center flex-wrap">
+              <button id="add-att-sem-btn" class="btn btn-secondary btn-sm">
+                + Add Semester
+              </button>
+              <button id="add-subject-btn" class="btn btn-primary btn-sm">
+                + Add Subject
+              </button>
+            </div>
           </div>
 
-          <!-- Critical Subjects Safety Alert Box (Dynamic) -->
-          <div id="critical-alert-container"></div>
-
-          <div id="subject-list-container">
-            <!-- Dynamic Subject Cards -->
-          </div>
-        </div>
-
-        <!-- Overall Summary, Consistency & Per-Subject Projection Planner -->
-        <div>
-          <!-- Overall Semester Attendance Result & Consistency -->
-          <div id="att-overall-result-container">
-            <!-- Dynamic Overall Hero Card with Consistency -->
-          </div>
-
-          <!-- Per-Subject Upcoming Attendance Projection Planner -->
-          <div class="card mb-4" id="subject-planner-card">
-            <div class="flex justify-between items-center mb-3">
-              <h3 class="card-title mb-0">🎯 Subject Attendance Planner</h3>
+          <!-- Semester Switcher Bar -->
+          <div class="card mb-6 p-3">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+              <span class="text-xs font-semibold text-muted" style="letter-spacing: 0.04em;">ACADEMIC SEMESTERS</span>
               <div class="flex items-center gap-2">
-                <label class="text-xs text-muted font-bold">Target:</label>
-                <input type="number" id="global-target-input" class="form-control" style="width: 70px; padding: 0.2rem 0.4rem; font-size: 0.8rem;" min="50" max="100" value="75" />
-                <span class="text-xs font-bold">%</span>
+                <span id="att-active-sem-badge" class="status-badge info text-xs">Viewing Semester 1</span>
+                <button id="delete-att-sem-btn" class="btn btn-sm btn-outline" style="color: var(--status-fail-text); border-color: rgba(248, 113, 113, 0.3); padding: 0.2rem 0.5rem; font-size: 0.725rem;" title="Delete this semester's attendance records">
+                  Delete Semester
+                </button>
               </div>
             </div>
-            <p class="text-xs text-muted mb-3">Plan how many classes you must attend for <strong>each subject</strong> to maintain or recover safe attendance.</p>
-            <div id="subject-planner-list">
-              <!-- Dynamic per-subject planner cards -->
+            <div id="att-sem-tabs-bar" class="flex gap-2 flex-wrap items-center">
+              <!-- Dynamic Semester Tabs -->
             </div>
           </div>
 
-          <!-- Subject Status Overview Table with Consistency -->
-          <div class="card mb-4" id="subject-overview-card">
-            <h3 class="card-title mb-3">📋 Subject Attendance & Consistency Breakdown</h3>
-            <div id="subject-overview-list">
-              <!-- Summary table -->
+          <!-- Main Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Left Column: Subject Records & Live Calculator Form -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <h2 id="att-sem-heading" class="text-lg font-semibold">Semester 1 Subjects</h2>
+                <span id="att-subject-count-badge" class="text-xs text-muted tabular-nums">0 subjects</span>
+              </div>
+
+              <!-- Critical Alert Box (Dynamic) -->
+              <div id="critical-alert-container"></div>
+
+              <!-- Dynamic Subject Input Rows -->
+              <div id="subject-list-container">
+                <!-- Subject rows populated by attendance.js -->
+              </div>
             </div>
+
+            <!-- Right Column: Summary Panels & Upcoming Planner -->
+            <div>
+              <!-- Section B & E: Summary Result Hero & Consistency -->
+              <div id="att-overall-result-container">
+                <!-- Dynamic Summary Container -->
+              </div>
+
+              <!-- Section D: Distinct Planning Section for Upcoming Classes -->
+              <div class="card mb-6" id="subject-planner-card">
+                <div class="flex justify-between items-center mb-3">
+                  <h3 class="card-title">Subject Attendance Planner</h3>
+                  <div class="flex items-center gap-2">
+                    <label for="global-target-input" class="text-xs text-muted font-medium">Target:</label>
+                    <input type="number" id="global-target-input" class="form-control" style="width: 65px; padding: 0.25rem 0.45rem; font-size: 0.8rem;" min="50" max="100" value="75" />
+                    <span class="text-xs font-semibold text-secondary">%</span>
+                  </div>
+                </div>
+                <p class="text-xs text-muted mb-4">Simulate how many upcoming classes you must attend or can safely miss to maintain your target.</p>
+                <div id="subject-planner-list">
+                  <!-- Dynamic per-subject planner cards -->
+                </div>
+              </div>
+
+              <!-- Breakdown Table -->
+              <div class="card mb-6" id="subject-overview-card">
+                <h3 class="card-title mb-3">Attendance & Consistency Breakdown</h3>
+                <div id="subject-overview-list">
+                  <!-- Dynamic Breakdown Table -->
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
-      </div>
+      </main>
     </div>
-  </main>
+  </div>
 
+  <!-- Mobile Sticky Bottom Navigation -->
   <nav class="mobile-nav-bar" id="mobile-nav-bar"></nav>
 
+  <!-- Scripts -->
   <script src="js/data/regulations.js"></script>
   <script src="js/core/attendance.js"></script>
   <script src="js/features/storage.js"></script>
@@ -112,5 +129,3 @@
   <script src="js/pages/attendance.js"></script>
 </body>
 </html>
-
-
